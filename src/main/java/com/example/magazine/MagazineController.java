@@ -21,16 +21,7 @@ public class MagazineController {
     }
     @GetMapping("/add")
     public String addProduct(@RequestParam String products){
-
-        try {
-            List<Integer> products1 = Arrays.stream(products.split(" "))
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
-            productBasket.addProduct(products1);
-        }catch (IllegalArgumentException e){
-            return "Illegal argument";
-        }
-        return "Product is added.";
+        return productBasket.addProduct(products);
     }
 
     @GetMapping("/get")
